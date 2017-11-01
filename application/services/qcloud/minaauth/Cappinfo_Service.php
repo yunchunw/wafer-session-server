@@ -62,10 +62,12 @@ class Cappinfo_Service
     {
         $select_sql = 'select * from cAppinfo';
         $mysql_select = new mysql_db();
+
         $result = $mysql_select->select_db($select_sql);
+//        log_message("info",json_encode($result));
         if ($result !== false && !empty($result)) {
             $arr_result = array();
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $arr_result['appid'] = $row['appid'];
                 $arr_result['secret'] = $row['secret'];
                 $arr_result['login_duration'] = $row['login_duration'];
